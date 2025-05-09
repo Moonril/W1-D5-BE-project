@@ -34,7 +34,7 @@ public class PlayerMultimediale {
 
         ElementoMultimediale[] preferiti = new ElementoMultimediale[5];
 
-        aggiungiPreferiti(preferiti);
+        // aggiungiPreferiti(preferiti);  // scommentare se si vuole ripopolare l'array
 
         //stampiamo i titoli
         for (ElementoMultimediale elemento : preferiti) {
@@ -53,39 +53,45 @@ public class PlayerMultimediale {
         System.out.println("Aggiungi " + arrayPreferiti.length + " elementi multimediali ai preferiti");
 
         for (int i = 0; i < arrayPreferiti.length; i++) {
+
             System.out.println("Elemento n." + (i + 1));
             System.out.println("Che tipo di elemento vuoi creare? (1 = Immagine, 2 = Video, 3 = Audio)");
             int scelta = scanner.nextInt();
             scanner.nextLine();
 
-            System.out.println("Inserisci il titolo: ");
-            String titolo = scanner.nextLine();
+
 
             switch(scelta) {
                 case 1:
-                    arrayPreferiti[i] = new Immagine(titolo);
+                    System.out.println("Inserisci il titolo: ");
+                    String titoloImg = scanner.nextLine();
+                    arrayPreferiti[i] = new Immagine(titoloImg);
+                    System.out.println("Aggiunto ai preferiti");
                     break;
                 case 2:
-                    System.out.println("Inserisci la durata del video: ");
+                    System.out.println("Inserisci il titolo: ");
+                    String titoloVid = scanner.nextLine();
+                    System.out.println("Inserisci la durata del video(max10min): ");
                     int durataVideo = scanner.nextInt();
                     scanner.nextLine();
-                    arrayPreferiti[i] = new Video(titolo, durataVideo);
+                    arrayPreferiti[i] = new Video(titoloVid, durataVideo);
+                    System.out.println("Aggiunto ai preferiti");
                     break;
                 case 3:
-                    System.out.println("Inserisci la durata della registrazione: ");
+                    System.out.println("Inserisci il titolo: ");
+                    String titoloAud = scanner.nextLine();
+                    System.out.println("Inserisci la durata della registrazione(max10min): ");
                     int duraraAudio = scanner.nextInt();
-                    arrayPreferiti[i] = new RegistrazioneAudio(titolo, duraraAudio);
+                    arrayPreferiti[i] = new RegistrazioneAudio(titoloAud, duraraAudio);
+                    System.out.println("Aggiunto ai preferiti");
                     break;
                 default:
                     System.out.println("Scelta non valida");
                     //ritornare indietro?
+                    i--;
+            }
 
-        }
-
-            System.out.println("Aggiunto ai preferiti");
-
-
-
+            //System.out.println("Aggiunto ai preferiti");
 
 
     }
