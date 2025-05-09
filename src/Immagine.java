@@ -25,15 +25,12 @@ public class Immagine extends ElementoMultimediale{
         return luminosita;
     }
 
-    public void setLuminosita(int luminosita) {
-        this.luminosita = luminosita;
-    }
 
     //metodi - show
 
     public void show(){
         String stelle = "*".repeat(this.luminosita);
-        System.out.println("Mostra immagine: " + this.getTitolo() + " , luminosità: " + stelle);
+        System.out.println("Mostra immagine: " + this.getTitolo() + ", luminosità: " + stelle);
     }
 
     // luminosità
