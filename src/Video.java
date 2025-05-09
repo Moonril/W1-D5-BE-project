@@ -8,7 +8,7 @@ public class Video extends ElementoMultimediale implements ElementoRiproducibile
 
     public Video(String titolo, int durata) {
         super(titolo);
-        //per non avere mai una durata negativa
+        //per non avere mai una durata negativa o troppo grande
         if (durata < 1 ) {
             throw new IllegalArgumentException("La durata deve essere un numero positivo!");
         } else if (durata > 10) {
