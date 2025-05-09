@@ -25,6 +25,13 @@ public class PlayerMultimediale {
         ElementoMultimediale registrazioneRadio2 = new RegistrazioneAudio("Ruggito del Coniglio - Radio 2", 10);
         ElementoMultimediale canzoneSantana = new RegistrazioneAudio("Corazon Espinado - Santana", 4);
         ((RegistrazioneAudio) canzoneSantana).play();
+        ((RegistrazioneAudio) canzoneSantana).alzaVolume();
+        ((RegistrazioneAudio) canzoneSantana).alzaVolume();
+        ((RegistrazioneAudio) canzoneSantana).alzaVolume();
+        ((RegistrazioneAudio) canzoneSantana).alzaVolume();
+        ((RegistrazioneAudio) canzoneSantana).play();
+
+
 
         System.out.println(" ----- fine prova -----");
 
@@ -34,15 +41,17 @@ public class PlayerMultimediale {
 
         ElementoMultimediale[] preferiti = new ElementoMultimediale[5];
 
-        // aggiungiPreferiti(preferiti);  // scommentare se si vuole ripopolare l'array
+        aggiungiPreferiti(preferiti);  // scommentare se si vuole ripopolare l'array
 
         //stampiamo i titoli
-        for (ElementoMultimediale elemento : preferiti) {
-            System.out.println("Preferito: " +elemento.getTitolo());
-        }
+//        System.out.println("Titoli array:");
+//        for (ElementoMultimediale elemento : preferiti) {
+//            System.out.println("Preferito: " +elemento.getTitolo());
+//        }
 
         //eseguiamo i preferiti
 
+        riproduciPreferiti(preferiti);
 
     }
 
@@ -73,6 +82,7 @@ public class PlayerMultimediale {
                     String titoloVid = scanner.nextLine();
                     System.out.println("Inserisci la durata del video(max10min): ");
                     int durataVideo = scanner.nextInt();
+
                     scanner.nextLine();
                     arrayPreferiti[i] = new Video(titoloVid, durataVideo);
                     System.out.println("Aggiunto ai preferiti");
@@ -98,7 +108,50 @@ public class PlayerMultimediale {
 
     }
 
-    public static void riproduciPreferiti(){
+    //metodo per riprodurre i preferiti
+    public static void riproduciPreferiti(ElementoMultimediale[] preferiti){
+        Scanner scanner = new Scanner(System.in);
+        while(true){
+            System.out.println("Quale elemento vuoi riprodurre? (1 - 5, 0 per uscire)");
+            int scelta = scanner.nextInt();
+            scanner.nextLine();
+
+            if(scelta == 0){
+                System.out.println("Uscita dal player.");
+                break;
+            }
+
+            if(scelta >= 1 && scelta <= 5) {
+                ElementoMultimediale elemento = preferiti[scelta - 1];
+                if (elemento instanceof Immagine) {
+                    System.out.println("modifica la luminosità predefinita:");
+                    int lum = scanner.nextInt();
+                    ((Immagine) elemento).setLuminosita(lum);
+                    ((Immagine) elemento).show();
+                } else if(elemento instanceof Video) {
+                    System.out.println("modifica la luminosità predefinita:");
+                    int lum = scanner.nextInt();
+                    ((Video) elemento).setLuminosita(lum);
+                    System.out.println("modifica il volume predefinito:");
+                    int vol = scanner.nextInt();
+                    ((Video) elemento).setVolume(vol);
+                    ((Video) elemento).play();
+                } else if(elemento instanceof RegistrazioneAudio){
+                    System.out.println("modifica il volume predefinito:");
+                    int vol = scanner.nextInt();
+                    ((RegistrazioneAudio) elemento).setVolume(vol);
+                    ((RegistrazioneAudio) elemento).play();
+                } else {
+                    System.out.println("Tipo di elemento non riconosciuto.");
+                }
+            } else {
+                System.out.println("Scelta non valida, riprova.");
+            }
+
+
+        }
+
+
 
     }
 }

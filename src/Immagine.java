@@ -6,6 +6,7 @@ public class Immagine extends ElementoMultimediale{
 
     public Immagine(String titolo) {
         super(titolo);
+
     }
 
 
@@ -25,8 +26,14 @@ public class Immagine extends ElementoMultimediale{
         return luminosita;
     }
 
-
-    //metodi - show
+    public void setLuminosita(int luminosita) {
+        if (luminosita >= 1 && luminosita <= 10) {
+            this.luminosita = luminosita;
+        } else {
+            System.out.println("Valore luminosità non valido (deve essere tra 1 e 10). Valore di default: 5.");
+        }
+    }
+//metodi - show
 
     public void show(){
         String stelle = "*".repeat(this.luminosita);

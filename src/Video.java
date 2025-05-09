@@ -1,6 +1,6 @@
 public class Video extends ElementoMultimediale implements ElementoRiproducibile{
     //variabili
-    private int durata;
+    private int durata = 1;
     private int luminosita = 5;
     private int volume = 5;
 
@@ -9,12 +9,11 @@ public class Video extends ElementoMultimediale implements ElementoRiproducibile
     public Video(String titolo, int durata) {
         super(titolo);
         //per non avere mai una durata negativa o troppo grande
-        if (durata < 1 ) {
-            throw new IllegalArgumentException("La durata deve essere un numero positivo!");
-        } else if (durata > 10) {
-            throw new IllegalArgumentException("Durata eccessiva, massimo 10 minuti!");
+        if (durata >= 1 && durata <= 10) {
+            this.durata = durata;
+        } else {
+            System.out.println("Valore volume non valido (deve essere tra 1 e 10) Valore di default: 5.");
         }
-        this.durata = durata;
     }
 
 
@@ -44,6 +43,21 @@ public class Video extends ElementoMultimediale implements ElementoRiproducibile
         return volume;
     }
 
+    public void setLuminosita(int luminosita) {
+        if (luminosita >= 1 && luminosita <= 10) {
+            this.luminosita = luminosita;
+        } else {
+            System.out.println("Valore luminosità non valido (deve essere tra 1 e 10). Valore di default: 5.");
+        }
+    }
+
+    public void setVolume(int volume) {
+        if (volume >= 1 && volume <= 10) {
+            this.volume = volume;
+        } else {
+            System.out.println("Valore volume non valido (deve essere tra 1 e 10). Valore di default: 5.");
+        }
+    }
 
     // metodi - play
 
