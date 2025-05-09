@@ -27,3 +27,7 @@ public abstract class ElementoMultimediale {
         return titolo;
     }
 }
+
+
+
+//commento per me: si poteva fare anche un metodo astratto esegui(); inserito nella superclasse. poi sovrascritto nelle sottoclassi. questo mi evitava di usare 'instance of' e 'cast' nel main.
